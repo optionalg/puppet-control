@@ -1,8 +1,9 @@
 class users::adrien {
   user { 'adrien':
-    ensure => present,
-    shell  => "/bin/zsh",
-    groups => ["sudo"],
+    ensure  => present,
+    shell   => "/bin/zsh",
+    groups  => ["sudo"],
+    require => Package["zsh"],
   }
 
   ssh_authorized_key { 'adrien:adrien@grey':
