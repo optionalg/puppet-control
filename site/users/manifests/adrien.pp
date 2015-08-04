@@ -1,9 +1,11 @@
 class users::adrien {
   user { 'adrien':
-    ensure  => present,
-    shell   => "/bin/zsh",
-    groups  => ["sudo"],
-    require => Package["zsh"],
+    ensure     => present,
+    home       => "/home/adrien",
+    managehome => "true",
+    shell      => "/bin/zsh",
+    groups     => ["sudo"],
+    require    => Package["zsh"],
   }
 
   file { "/home/adrien/.ssh":
