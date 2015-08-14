@@ -5,4 +5,6 @@ class nodes::yggdrasil {
 
   include users
   include services::sinistral_web
+
+  include fail2ban
 }
