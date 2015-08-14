@@ -5,7 +5,6 @@ class nodes::yggdrasil {
 
   include users
 
-
   include srv
 
   file { '/srv/www':
@@ -17,11 +16,16 @@ class nodes::yggdrasil {
 
   class { 'nginx': }
 
+  group { 'www-data':
+    ensure  => present,
+    members => ['adrien', 'nginx'],
+  }
+
   file { '/srv/www/somethingsinistral.net':
     ensure => directory,
-    owner  => 'root',
-    group  => 'root',
-    mode   => '0755',
+    owner  => 'www-data',
+    group  => 'www-data',
+    mode   => '6775',
   }
 
   nginx::resource::vhost { 'somethingsinistral.net':
