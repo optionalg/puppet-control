@@ -18,7 +18,6 @@ class nodes::yggdrasil {
 
   group { 'www-data':
     ensure  => present,
-    members => ['adrien', 'nginx'],
   }
 
   file { '/srv/www/somethingsinistral.net':

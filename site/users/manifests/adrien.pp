@@ -4,7 +4,7 @@ class users::adrien {
     home       => "/home/adrien",
     managehome => "true",
     shell      => "/bin/zsh",
-    groups     => ["sudo"],
+    groups     => ["sudo", "www-data"],
     require    => Package["zsh"],
   }
 
