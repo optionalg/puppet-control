@@ -1,11 +1,6 @@
 class nodes::yggdrasil {
   include roles::production
-
-  package { 'zsh':
-    ensure => present,
-  }
-
-  include users
+  include services::bastion
   include services::sinistral_web
 
   class { "systemd::timedatectl":
