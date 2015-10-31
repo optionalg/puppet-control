@@ -11,4 +11,8 @@ class nodes::yggdrasil {
   class { "systemd::timedatectl":
     timezone => "America/Los_Angeles",
   }
+
+  class { "systemd::hostnamectl":
+    static => "yggdrasil",
+  }
 }
