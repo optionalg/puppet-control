@@ -1,9 +1,5 @@
 class nodes::yggdrasil {
-  package { 'zsh':
-    ensure => present,
-  }
-
-  include users
+  include services::bastion
   include services::sinistral_web
 
   include fail2ban
