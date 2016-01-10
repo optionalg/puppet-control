@@ -7,4 +7,8 @@ class nodes::dust {
   package { "docker":
     ensure => present,
   }
+
+  package { ["kicad", "kicad-library", "kicad-library-3d"]:
+    ensure => present,
+  }
 }
