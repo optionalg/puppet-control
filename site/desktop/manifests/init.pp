@@ -1,8 +1,7 @@
 class desktop {
+  include userland
+
   package { "chromium":
-    ensure => present,
-  }
-  package { "zsh":
     ensure => present,
   }
   package { "gvim":
