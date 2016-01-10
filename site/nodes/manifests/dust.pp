@@ -1,4 +1,6 @@
 class nodes::dust {
+  include roles::base
+
   include manjaro
   include desktop
 
