@@ -8,4 +8,7 @@ class desktop {
   package { "gvim":
     ensure => present,
   }
+  package { "the_silver_searcher":
+    ensure => present,
+  }
 }
