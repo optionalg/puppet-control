@@ -10,4 +10,7 @@ class desktop {
   package { "the_silver_searcher":
     ensure => present,
   }
+  package { "xclip":
+    ensure => present,
+  }
 }
