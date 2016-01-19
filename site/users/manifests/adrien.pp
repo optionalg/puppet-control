@@ -24,8 +24,8 @@ class users::adrien {
 
   ssh_authorized_key { 'adrien:adrien+sinistral@sky':
     user    => 'adrien',
-    type    => 'ecdsa-sha2-nistp256',
-    key     => 'AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBL/ZkXS/9/cw3M5GgXO+EjdphbFn4Itt1W51rioG251jmoFxVslpz1DmJrPYoxOgmI4kFuZ5QpJjotwIgXTfFX0=',
+    type    => 'ssh-rsa',
+    key     => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDjoQC/+AU2ai9H8gGESDwH9kgJAcqfQFkzlvYmaG03jZ6sjfVsobv7H2VyJZJ1B8FyUuSoUyMRQe/Hz3lZie50buX8JtHKczrwA1lM1k3WOMe/hCLBWiIKF4d/X8Uc2EjKo0FBOCMk06Ua09oOlc5066KuxVyrAvL2FMq6oUs2/FPNrkcsWps+kVBAGEJoarSXHXhsqAmpoVyK5WTcGsL4UmA74MDyKvuZL1yD0hNzU7gQSNTYnnGUNHthK7CYg1J7MjlOXXgaU+q1Acc5vRiUX7Ip3lYYSxQILINsq0wYpNZn6sssjaO/qyDqQfH5AdcHhKrZ5JDalEIUCf86chAL',
     require => File["/home/adrien/.ssh"],
   }
 
