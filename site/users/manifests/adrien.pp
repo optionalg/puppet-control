@@ -28,4 +28,11 @@ class users::adrien {
     key     => 'AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBL/ZkXS/9/cw3M5GgXO+EjdphbFn4Itt1W51rioG251jmoFxVslpz1DmJrPYoxOgmI4kFuZ5QpJjotwIgXTfFX0=',
     require => File["/home/adrien/.ssh"],
   }
+
+  ssh_authorized_key { 'adrien:adrien+sinistral@dust':
+    user => 'adrien',
+    type => 'ssh-rsa',
+    key  => 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDJRsbGu0vjONt7w4suWXl+ReQgyG14hE0bNfPMEMW0R10CWqpgmeixxekMTdJrypqAr6ubnQBO+nh5effK7U7iqkl8x9qup/vsyaYS9S2NrVD4EWZqQ97/6ncxkYJZyeOEHI392qYAU+JemQuaUgMz6mb7/kK80dls/gIRzrO/tF9iiYjYJsZ0JjblXYcrtkMILA7nhw63s3bPhb2z9Q2eCr9PLDHuva3QSkuOQg4Yi+3KIhJZBzE9HVQ+40IKX0luQrIFbHl6IJMlpqJMI0fgStvDHLT5FcTOEvGB7yGigRS0qYlryKxJ9vvqpFC0PgwhGWRxA07yHLCCwUWEoz4J',
+    require => File["/home/adrien/.ssh"],
+  }
 }
