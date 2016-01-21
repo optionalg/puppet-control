@@ -2,6 +2,7 @@ class nodes::dust {
   include roles::base
 
   include manjaro
+  include manjaro::desktop
   include desktop
 
   package { "docker":
