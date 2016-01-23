@@ -10,6 +10,7 @@ class nodes::dust {
   }
 
   include teensy
+  include boxzy
   package { ["kicad", "kicad-library", "kicad-library-3d"]:
     ensure => present,
   }
