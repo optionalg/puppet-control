@@ -6,10 +6,16 @@ class users::ken {
     managehome => "true",
   }
 
-  file { "/home/ken/.ssh":
-    ensure => directory,
-    owner  => 'ken',
-    group  => 'ken',
-    mode   => '0700',
+  file {
+    default:
+      owner  => 'ken',
+      group  => 'ken';
+    "/home/ken/.ssh":
+      ensure => directory,
+      mode   => '0700';
+    "/home/ken/.ssh/authorized_keys":
+      ensure => file,
+      mode   => '0400',
+      source => 'puppet:///modules/users/home/ken/.ssh/authorized_keys';
   }
 }
