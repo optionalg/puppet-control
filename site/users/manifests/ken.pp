@@ -1,9 +1,10 @@
 class users::ken {
   user { 'ken':
-    ensure     => present,
-    uid        => 1001,
-    home       => "/home/ken",
-    managehome => "true",
+    ensure      => present,
+    uid         => 1001,
+    home        => "/home/ken",
+    managehome  => "true",
+    shell       => "/bin/bash",
   }
 
   file {
