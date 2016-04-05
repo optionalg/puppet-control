@@ -5,4 +5,7 @@ class userland {
   package { "keychain":
     ensure => present,
   }
+  package { "weechat-curses":
+    ensure => present,
+  }
 }
