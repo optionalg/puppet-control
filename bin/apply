@@ -1,21 +1,59 @@
 #!/bin/bash
 
-if [[ $EUID -ne 0 ]]; then
-  echo "Perhaps run this as root."
-  exit 1
-fi
+puppet_apply() {
+    local basedir=$1
+    local nodename=$2
+    local puppet_path="$basedir/vendor/puppet"
 
-if [[ -n $1 ]]; then
-  node=$1
-else
-  node=$(hostname)
-fi
+    checkpuppet $puppet_path
 
-project_dir=$(dirname $(dirname $0))
+    set -x
 
-set -x
+    (
+        cd $puppet_path
+        bundle exec puppet apply \
+            --modulepath "${basedir}/site:${basedir}/dist" \
+            --trace \
+            -e "include nodes::${nodename}"
+    )
+}
 
-puppet apply \
-  --modulepath "${project_dir}/site:${project_dir}/dist" \
-  --trace \
-  -e "include nodes::${node}"
+checkpuppet() {
+    local puppet_path=$1
+    local dot_bundle="$puppet_path/.bundle"
+    if ! $(which bundle 1>/dev/null 2>/dev/null); then
+        echo "Bundler is not installed; please fix that and try again." >&2
+        exit 1
+    fi
+    if ! [[ -d $dot_bundle ]]; then
+        echo "Bundler has not been run in $puppet_path, which is best done as a user. Please do that." >&2
+        exit 1
+    fi
+
+}
+
+checkperms() {
+    if [[ $EUID -ne 0 ]]; then
+        echo "Puppet needs to be run as root; perhaps try this again with \`sudo\`." >&2
+        exit 1
+    fi
+}
+
+main() {
+    basedir=$1
+
+    checkperms
+
+    if [[ -n $2 ]]; then
+        local nodename=$1
+        echo "Applying configuration for node '$nodename'"
+    else
+        local nodename=$(hostname)
+        echo "Applying configuration for current node (assumed '$nodename')"
+    fi
+
+    puppet_apply $basedir $nodename
+}
+
+
+main $(readlink -f $(dirname $(dirname $0))) $1

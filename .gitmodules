@@ -1,0 +1,3 @@
+[submodule "vendor/puppet"]
+	path = vendor/puppet
+	url = https://github.com/puppetlabs/puppet
